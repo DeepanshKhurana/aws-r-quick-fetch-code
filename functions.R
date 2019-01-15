@@ -53,6 +53,8 @@ cleanupZip <- function(f) {
   file.remove(c(zip.name, file.name))
 }
 
+#### Unzip and Read ZIP files with CSV inside them
+
 zipToCSV <- function(s3URL, filename) {
   aws.s3::save_object(s3URL, file = filename, url_style = "virtual")
   directory <- getwd()
@@ -65,6 +67,9 @@ zipToCSV <- function(s3URL, filename) {
   cleanupZip(filename)
   return(data)
 }
+
+#### Unzip and Read ZIP files with JSON inside them.
+### This is essentially the same function but only changes the extension used later.
 
 zipToJSON <- function(s3URL, filename) {
   aws.s3::save_object(s3URL, file = filename, url_style = "virtual")
